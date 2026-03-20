@@ -89,7 +89,39 @@ const activeSectionObserver = new IntersectionObserver(
 
 sections.forEach(s => activeSectionObserver.observe(s));
 
-// ── FORM SUBMIT ──
+// ── BOOK HAND-HOLDING EFFECT ──
+const coverImg = document.querySelector('.cover-flat');
+if (coverImg) {
+  const wrap = coverImg.closest('.featured-cover-wrap') || coverImg.parentElement;
+
+  wrap.addEventListener('mousemove', (e) => {
+    const rect = coverImg.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);   // -1 to +1
+    const dy = (e.clientY - cy) / (rect.height / 2);  // -1 to +1
+
+    const rotY =  dx * 14;   // max ±14° orizzontale
+    const rotX = -dy * 10;   // max ±10° verticale
+    const lift = -8;          // si alza leggermente
+
+    const shadowX = dx * 20;
+    const shadowY = 40 - dy * 10;
+
+    coverImg.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(${lift}px)`;
+    coverImg.style.boxShadow = `
+      ${shadowX}px ${shadowY}px 80px rgba(0,0,0,0.75),
+      0 0 50px rgba(201,168,76,0.15)
+    `;
+    coverImg.style.transition = 'box-shadow 0.1s ease';
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    coverImg.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
+    coverImg.style.boxShadow = '0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(201,168,76,0.08)';
+    coverImg.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease';
+  });
+}
 const form = document.getElementById('newsletterForm');
 if (form) {
   form.addEventListener('submit', (e) => {
