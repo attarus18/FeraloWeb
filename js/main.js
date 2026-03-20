@@ -68,26 +68,7 @@ document.querySelectorAll(
   revealObserver.observe(el);
 });
 
-// ── 3D BOOK TILT ON MOUSE MOVE ──
-const book3d = document.querySelector('.book-3d');
-if (book3d) {
-  const wrap = book3d.closest('.featured-cover-wrap');
-  if (wrap) {
-    wrap.addEventListener('mousemove', (e) => {
-      const rect = wrap.getBoundingClientRect();
-      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-      book3d.style.transform = `
-        perspective(800px)
-        rotateY(${-20 + x * 20}deg)
-        rotateX(${-y * 8}deg)
-      `;
-    });
-    wrap.addEventListener('mouseleave', () => {
-      book3d.style.transform = 'perspective(800px) rotateY(-20deg) rotateX(0deg)';
-    });
-  }
-}
+
 
 // ── SMOOTH ACTIVE NAV LINK ──
 const sections = document.querySelectorAll('section[id]');

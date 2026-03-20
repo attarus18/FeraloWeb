@@ -362,90 +362,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* 3D Book */
-.book-3d {
-  width: 220px;
-  height: 320px;
-  transform-style: preserve-3d;
-  transform: perspective(800px) rotateY(-20deg);
-  transition: transform 0.6s ease;
+/* Flat book cover */
+.cover-flat {
+  width: 320px;
+  max-width: 100%;
+  display: block;
   margin: 0 auto;
-  cursor: pointer;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(201,168,76,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.book-3d:hover {
-  transform: perspective(800px) rotateY(-8deg);
-}
-
-.book-front {
-  position: absolute;
-  width: 220px; height: 320px;
-  background: linear-gradient(145deg, #1c1410, #0e0c09);
-  border: 1px solid rgba(201,168,76,0.3);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.7), var(--shadow-gold);
-}
-
-.book-cover-art {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  overflow: hidden;
-  background: #0d0b08;
-}
-
-.cover-ornament {
-  color: var(--gold);
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  opacity: 0.7;
-}
-
-.cover-title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.35rem;
-  color: var(--ivory);
-  line-height: 1.3;
-  margin-bottom: 1.5rem;
-}
-
-.cover-line {
-  width: 40px; height: 1px;
-  background: var(--gold-dim);
-  margin: 0 auto 1rem;
-}
-
-.cover-author {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-.book-spine {
-  position: absolute;
-  left: -30px; top: 0;
-  width: 30px; height: 320px;
-  background: linear-gradient(to right, #0a0907, #1c1812);
-  border-top: 1px solid rgba(201,168,76,0.2);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  border-left: 1px solid rgba(201,168,76,0.1);
-  transform-origin: right;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.book-spine span {
-  transform: rotate(-90deg);
-  white-space: nowrap;
-  font-family: var(--font-sans);
-  font-size: 0.45rem;
-  letter-spacing: 0.2em;
-  color: var(--gold-dim);
-  text-transform: uppercase;
+.cover-flat:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 60px rgba(201,168,76,0.12);
 }
 
 .featured-text .section-label { display: block; margin-bottom: 1rem; }
